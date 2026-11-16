@@ -18,5 +18,10 @@ FastAPI + SQLite 주문 관리 API. 계층 구조: `app/api` → `app/services` 
 - 새 엔드포인트에는 tests/에 테스트 필수
 - `scripts/reset_db.py` 실행 금지. `.env` 열람 금지
 
+## 장기 실행 작업 (features.json)
+- 시작 시 progress.md, features.json, `git log --oneline -10`을 먼저 읽는다
+- 한 세션에 기능 하나만. features.json은 `passes` 값만 바꾼다 (항목·기준 수정 금지)
+- 테스트 통과 후에만 passes: true → progress.md 기록 → git commit
+
 ## 완료의 정의
 빠른 테스트 통과 + ruff 통과 + 변경 요약과 남은 위험 보고

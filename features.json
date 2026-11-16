@@ -1,0 +1,20 @@
+[
+  {
+    "id": "F-01",
+    "desc": "GET /orders 에 커서 페이지네이션 적용 (cursor, limit 파라미터, meta.next_cursor). /customers 와 같은 방식",
+    "test": "tests/test_orders_pagination.py",
+    "passes": false
+  },
+  {
+    "id": "F-02",
+    "desc": "GET /orders?status=PAID 처럼 상태 필터 추가. 잘못된 상태 값은 400. 페이지네이션과 함께 동작",
+    "test": "tests/test_orders_filter.py",
+    "passes": false
+  },
+  {
+    "id": "F-03",
+    "desc": "GET /customers/{id}/orders 추가. 고객별 주문 목록, 커서 페이지네이션, 없는 고객은 404",
+    "test": "tests/test_customer_orders.py",
+    "passes": false
+  }
+]
