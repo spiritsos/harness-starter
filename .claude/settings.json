@@ -5,6 +5,7 @@
       "Bash(ruff check:*)",
       "Bash(ruff format:*)",
       "Bash(python scripts/seed.py)",
+      "Bash(python .claude/skills/team-conventions/scripts/check_layers.py)",
       "Bash(git status)",
       "Bash(git diff:*)",
       "Bash(git log:*)"
@@ -22,6 +23,31 @@
       "Bash(rm -rf:*)",
       "Bash(curl:*)",
       "Bash(wget:*)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash|Read|Edit|Write|MultiEdit",
+        "hooks": [
+          { "type": "command", "command": "python \"$CLAUDE_PROJECT_DIR/.claude/hooks/guard.py\"" }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          { "type": "command", "command": "python \"$CLAUDE_PROJECT_DIR/.claude/hooks/lint.py\"" }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          { "type": "command", "command": "python \"$CLAUDE_PROJECT_DIR/.claude/hooks/tests.py\"" }
+        ]
+      }
     ]
   }
 }
